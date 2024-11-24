@@ -5,8 +5,10 @@ from app_logic.csv_handler import check_ref
 from app_logic.csv_handler import read_from_csv
 from app_logic.csv_handler import save_to_csv
 from app_logic.csv_handler import update_csv
+from app_logic.print_label import generate_label
 from datetime import datetime
 
+printer = 'Godex G500'
 print('Welcome to Rework Tracker APP!!!!')
 operator = input('Enter your Work Code!!!\n')
 step = ''
@@ -28,14 +30,23 @@ if option == '1':
         exit(-1)
     fault = input('enter Fault Description\n')
     start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    label_data = {}
+    label_data['PROJECT'] = ref_data[0]
+    label_data['REFERENCE'] = ref_data[1]
+    label_data['OPERATOR'] = operator
+    label_data['DATETIME'] = start_time
+    label_data['REWORKDATA'] = '{};{};{}'.format(rework_card,
+                                                 ref_data[1],
+                                                 start_time)
+    generate_label(rework_card, 'start', printer, label_data)
     save_to_csv(path, [operator,
                        ref_data[1],
                        ref_data[0],
                        rework_card,
                        fault,
                        start_time,
-                       Null,
-                       Null])
+                       None,
+                       None])
     exit(0)
 elif option == '2':
     step = 'end_rework'
