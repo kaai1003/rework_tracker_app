@@ -14,7 +14,7 @@ def generate_label(id, label, printer, data):
         # Replace variables in the template
         if data:
             label_content = label_content.format(**data)
-            output_label = 'data/label/{}_{}.txt'.format(label, id)
+            output_label = 'data/label/{}_{}.txt'.format(label, id[0:-1])
             # Save the modified label to a new file
             with open(output_label, 'w') as output_file:
                 output_file.write(label_content)
