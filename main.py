@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 """main module"""
 from app_logic.csv_handler import get_csv_name
 from app_logic.csv_handler import check_ref
@@ -23,10 +23,15 @@ if option == '1':
         print('Reference Not Exist on Database!!!!')
         exit(-1)
     rework_card = input('Scan Rework Card\n')
-    path = 'data/data_rework/{}'.format(filename)
-    data = read_from_csv(path, rework_card)
-    if data:
-        print('harness already exist')
+    if rework_card[0:1] == '*' and rework_card[-1] == '#':
+        rework_card = rework_card[1:-1]
+        path = 'data/data_rework/{}'.format(filename)
+        data = read_from_csv(path, rework_card)
+        if data:
+            print('harness already exist')
+            exit(-1)
+    else:
+        print('Invalid Rework Serial Number')
         exit(-1)
     fault = input('enter Fault Description\n')
     start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -70,6 +75,14 @@ elif option == '2':
     end_time = datetime.now()
     rework_time = end_time - start_time
     rework_time = rework_time.total_seconds() / 60
+    label_data = {}
+    label_data['PROJECT'] = ref_data[0]
+    label_data['REFERENCE'] = ref_data[1]
+    label_data['OPERATOR'] = operator
+    label_data['DATETIME'] = end_time.strftime("%Y-%m-%d %H:%M:%S")
+    label_data['REWORKTIME'] = start_time
+    label_data['REWORKDATA'] = rework_card
+    generate_label(rework_card, 'end', printer, label_data)
     save_to_csv(path,
                 [operator,
                  ref_data[1],

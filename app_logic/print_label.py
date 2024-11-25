@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 """print label Module"""
 import win32print
 import win32ui
@@ -14,7 +14,7 @@ def generate_label(id, label, printer, data):
         # Replace variables in the template
         if data:
             label_content = label_content.format(**data)
-            output_label = 'data/label/{}_{}.txt'.format(label, id[0:-1])
+            output_label = 'data/label/{}_{}.txt'.format(label, id)
             # Save the modified label to a new file
             with open(output_label, 'w') as output_file:
                 output_file.write(label_content)
@@ -22,7 +22,7 @@ def generate_label(id, label, printer, data):
             print(f"Label generated and saved to {output_label}")
             try:
                 # Get the printer handle
-                printer_handle = win32print.OpenPrinter(printer_name)
+                printer_handle = win32print.OpenPrinter(printer)
                 
                 # Open a print job
                 job = win32print.StartDocPrinter(printer_handle, 1, ("Print Job", None, "RAW"))
