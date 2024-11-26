@@ -80,7 +80,7 @@ elif option == '2':
     label_data['REFERENCE'] = ref_data[1]
     label_data['OPERATOR'] = operator
     label_data['DATETIME'] = end_time.strftime("%Y-%m-%d %H:%M:%S")
-    label_data['REWORKTIME'] = start_time
+    label_data['REWORKTIME'] = round(rework_time, 2)
     label_data['REWORKDATA'] = rework_card
     generate_label(rework_card, 'end', printer, label_data)
     save_to_csv(path,
