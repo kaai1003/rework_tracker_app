@@ -3,8 +3,9 @@
 import win32print
 import win32ui
 
-def generate_label(id, label, printer, data):
+def generate_label(id, label, data):
     """generate label"""
+    printer = 'Godex G500'
     template_path = 'data/label/{}_template.txt'.format(label)
     try:
         # Read the template

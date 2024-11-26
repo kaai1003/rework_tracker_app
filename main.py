@@ -8,7 +8,7 @@ from app_logic.csv_handler import update_csv
 from app_logic.print_label import generate_label
 from datetime import datetime
 
-printer = 'Godex G500'
+
 print('Welcome to Rework Tracker APP!!!!')
 operator = input('Enter your Work Code!!!\n')
 step = ''
@@ -43,7 +43,7 @@ if option == '1':
     label_data['REWORKDATA'] = '{};{};{}'.format(rework_card,
                                                  ref_data[1],
                                                  start_time)
-    generate_label(rework_card, 'start', printer, label_data)
+    generate_label(rework_card, 'start', label_data)
     save_to_csv(path, [operator,
                        ref_data[1],
                        ref_data[0],
