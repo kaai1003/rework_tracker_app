@@ -29,10 +29,13 @@ def save_to_csv(path, data):
         with open(path, mode="w", newline="") as file:
             writer = csv.writer(file)
             writer.writerow(["Operator Code",
-                             "Reference",
                              "Famille",
+                             "Reference",
+                             "DATEPROD",
+                             "LINEPROD",
                              "Rework Card",
                              "Fault",
+                             "Process",
                              "Start Time",
                              "End Time",
                              "Rework Time"])
