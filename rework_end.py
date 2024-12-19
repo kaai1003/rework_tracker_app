@@ -26,10 +26,11 @@ class App(customtkinter.CTk):
         # load images with light and dark mode image
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "test_images")
         self.logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "rework_icon.png")), size=(50, 50))
-        self.large_test_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "start_rework.png")), size=(500, 170))
-        self.large_login_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "Rework-IN.png")), size=(500, 150))
-        self.info_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "info.png")), size=(500, 100))
+        self.large_test_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "Rework-OUT.png")), size=(500, 170))
+        self.large_login_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "Reworkstart.png")), size=(500, 150))
+        self.info_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "infoout.png")), size=(500, 100))
         self.login_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "login.png")), size=(300, 300))
+        self.qrcode_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "qrcode.png")), size=(300, 300))
         self.image_icon_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "image_icon_light.png")), size=(20, 20))
         self.user_image = customtkinter.CTkImage(light_image=Image.open(os.path.join(image_path, "user.png")),
                                                  dark_image=Image.open(os.path.join(image_path, "user.png")), size=(30, 30))
@@ -113,118 +114,22 @@ class App(customtkinter.CTk):
                                                        text="",
                                                        image=self.info_image)
         self.home_frame_label.grid(row=1, column=0, padx=20, pady=0)
+        self.home_frame_image_label = customtkinter.CTkLabel(self.home_frame, text="", image=self.qrcode_image)
+        self.home_frame_image_label.grid(row=2, column=0, padx=20, pady=10)
         
-        #reference input
-        self.home_frame_entry_label_1 = customtkinter.CTkLabel(self.home_frame,
-                                                               text="------Harness Reference------",
-                                                               compound="left",
-                                                               font=customtkinter.CTkFont(size=17, weight="bold"),
-                                                               text_color="black")
-        self.home_frame_entry_label_1.grid(row=2, column=0, padx=20, pady=5)
-        self.home_frame_entry_1 = customtkinter.CTkEntry(self.home_frame, placeholder_text="ex: 1234567 01",
-                                                         height=20,
-                                                         width=300,
-                                                         font=("Helvetica", 20),
-                                                         corner_radius=5,
+        # scan QR code
+        self.home_frame_entry_1 = customtkinter.CTkEntry(self.home_frame, placeholder_text="SCAN QR CODE LABEL",
+                                                         height=50,
+                                                         width=400,
+                                                         font=("Helvetica", 30),
+                                                         corner_radius=10,
                                                          text_color="black",
                                                          placeholder_text_color="#fc9522",
                                                          fg_color=("#b9dbfc"),
                                                          state="normal",
-                                                         border_color="#878bfa")
+                                                         show='*')
         self.home_frame_entry_1.grid(row=3, column=0, padx=20, pady=0)
         
-        #date production fx
-        self.home_frame_entry_label_3 = customtkinter.CTkLabel(self.home_frame,
-                                                               text="------Date Production FX------",
-                                                               compound="left",
-                                                               font=customtkinter.CTkFont(size=17, weight="bold"),
-                                                               text_color="black")
-        self.home_frame_entry_label_3.grid(row=4, column=0, padx=20, pady=0)
-        self.home_frame_entry_3 = customtkinter.CTkEntry(self.home_frame, placeholder_text="ex: 26-11-2024 12:10:10",
-                                                         height=20,
-                                                         width=300,
-                                                         font=("Helvetica", 20),
-                                                         corner_radius=5,
-                                                         text_color="black",
-                                                         placeholder_text_color="#fc9522",
-                                                         fg_color=("#b9dbfc"),
-                                                         state="normal",
-                                                         border_color="#878bfa")
-        self.home_frame_entry_3.grid(row=5, column=0, padx=20, pady=0)
-        #Production Line
-        self.home_frame_entry_label_4 = customtkinter.CTkLabel(self.home_frame,
-                                                               text="------Production Line------",
-                                                               compound="left",
-                                                               font=customtkinter.CTkFont(size=17, weight="bold"),
-                                                               text_color="black")
-        self.home_frame_entry_label_4.grid(row=6, column=0, padx=20, pady=5)
-        self.home_frame_entry_4 = customtkinter.CTkEntry(self.home_frame, placeholder_text="ex : 1",
-                                                         height=20,
-                                                         width=300,
-                                                         font=("Helvetica", 20),
-                                                         corner_radius=5,
-                                                         text_color="black",
-                                                         placeholder_text_color="#fc9522",
-                                                         fg_color=("#b9dbfc"),
-                                                         state="normal",
-                                                         border_color="#878bfa")
-        self.home_frame_entry_4.grid(row=7, column=0, padx=20, pady=0)
-        
-        #rework input
-        self.home_frame_entry_label_2 = customtkinter.CTkLabel(self.home_frame,
-                                                               text="------Reword Card------",
-                                                               compound="left",
-                                                               font=customtkinter.CTkFont(size=17, weight="bold"),
-                                                               text_color="black")
-        self.home_frame_entry_label_2.grid(row=8, column=0, padx=20, pady=5)
-        self.home_frame_entry_2 = customtkinter.CTkEntry(self.home_frame, placeholder_text="Scan Rework Card",
-                                                         height=20,
-                                                         width=300,
-                                                         font=("Helvetica", 20),
-                                                         corner_radius=5,
-                                                         text_color="black",
-                                                         placeholder_text_color="#fc9522",
-                                                         fg_color=("#b9dbfc"),
-                                                         state="normal",
-                                                         border_color="#878bfa")
-        self.home_frame_entry_2.grid(row=9, column=0, padx=20, pady=0)
-        
-        #Failure Description
-        self.home_frame_entry_label_5 = customtkinter.CTkLabel(self.home_frame,
-                                                               text="------Failure Description------",
-                                                               compound="left",
-                                                               font=customtkinter.CTkFont(size=17, weight="bold"),
-                                                               text_color="black")
-        self.home_frame_entry_label_5.grid(row=10, column=0, padx=20, pady=5)
-        self.home_frame_entry_5 = customtkinter.CTkEntry(self.home_frame, placeholder_text="ex: manque Clip",
-                                                         height=20,
-                                                         width=300,
-                                                         font=("Helvetica", 20),
-                                                         corner_radius=5,
-                                                         text_color="black",
-                                                         placeholder_text_color="#fc9522",
-                                                         fg_color=("#b9dbfc"),
-                                                         state="normal",
-                                                         border_color="#878bfa")
-        self.home_frame_entry_5.grid(row=11, column=0, padx=20, pady=0)
-        #Failure Process
-        self.home_frame_entry_label_6 = customtkinter.CTkLabel(self.home_frame,
-                                                               text="------Failure Process------",
-                                                               compound="left",
-                                                               font=customtkinter.CTkFont(size=17, weight="bold"),
-                                                               text_color="black")
-        self.home_frame_entry_label_6.grid(row=12, column=0, padx=20, pady=5)
-        self.home_frame_entry_6 = customtkinter.CTkEntry(self.home_frame, placeholder_text="ex: LAD,PTA,PU,BOL1...",
-                                                         height=20,
-                                                         width=300,
-                                                         font=("Helvetica", 20),
-                                                         corner_radius=5,
-                                                         text_color="black",
-                                                         placeholder_text_color="#fc9522",
-                                                         fg_color=("#b9dbfc"),
-                                                         state="normal",
-                                                         border_color="#878bfa")
-        self.home_frame_entry_6.grid(row=13, column=0, padx=20, pady=0)
         # Button save and Print
         self.home_frame_button_1 = customtkinter.CTkButton(self.home_frame,
                                                            text="Save and Print",
@@ -233,7 +138,7 @@ class App(customtkinter.CTk):
                                                            fg_color=("#066603"),
                                                            height=50,
                                                            width=200)
-        self.home_frame_button_1.grid(row=14, column=0, padx=20, pady=20)
+        self.home_frame_button_1.grid(row=5, column=0, padx=20, pady=20)
         # create second frame
         self.second_frame = customtkinter.CTkFrame(self, corner_radius=0, fg_color="transparent")
 
@@ -242,16 +147,26 @@ class App(customtkinter.CTk):
 
         # select default frame
         self.select_frame_by_name("login")
+        
+        #enter key event
+        self.login_frame_entry_1.bind("<Return>", self.login_button_event)
+        self.home_frame_entry_1.bind("<Return>", self.on_submit)
 
-    def on_submit(self):
+    def on_submit(self, event=None):
         """save harness info"""
-        filename = get_csv_name('start_rework')
+        filename = get_csv_name('end_rework')
         label_data = {}
         csv_data = []
         label_data['OPERATOR'] = self.operator
         csv_data.append(self.operator)
         # check Reference
-        ref = check_ref(self.home_frame_entry_1.get())
+        qr_code = self.home_frame_entry_1.get()
+        reword_data = qr_code.split(';')
+        if len(reword_data) < 3:
+            self.home_frame_entry_1.delete(0, customtkinter.END)
+            messagebox.showerror("Error", "Invalid QRCode!!!")
+            return
+        ref = check_ref(reword_data[1])
         if ref is None:
             self.home_frame_entry_1.delete(0, customtkinter.END)
             messagebox.showerror("Error", "Invalid Reference!!!")
@@ -260,65 +175,37 @@ class App(customtkinter.CTk):
         csv_data.append(ref[0])
         label_data['REFERENCE'] = ref[1]
         csv_data.append(ref[1])
-        # check Production Date
-        date_prd = self.home_frame_entry_3.get()
-        try:
-            dt_prod = datetime.strptime(date_prd, "%d-%m-%Y %H:%M:%S")
-        except Exception:
-            self.home_frame_entry_3.delete(0, customtkinter.END)
-            messagebox.showerror("Error", "Invalid Date and Time!!!")
-            return
-        csv_data.append(dt_prod.strftime("%Y-%m-%d %H:%M:%S"))
-        # check Production Line
-        line = self.home_frame_entry_4.get()
-        if line == '':
-            self.home_frame_entry_4.delete(0, customtkinter.END)
-            messagebox.showerror("Error", "Invalid Production Line!!!")
-            return
-        csv_data.append(line)
+        csv_data.append('None')
+        csv_data.append('None')
         # Rework Card Check
-        rework_card = self.home_frame_entry_2.get()
-        if rework_card[0:1] == '*' and rework_card[-1] == '#':
-            rework_card = rework_card[1:-1]
-            path = 'data/data_rework/{}'.format(filename)
-            data = read_from_csv(path, rework_card)
-            if data:
-                self.home_frame_entry_2.delete(0, customtkinter.END)
-                messagebox.showerror("Error", "Harness Already Exist!!!")
-                return
-        else:
-            self.home_frame_entry_2.delete(0, customtkinter.END)
-            messagebox.showerror("Error", "Invalid Rework Card!!!")
+        rework_card = reword_data[0]
+        path = 'data/data_rework/{}'.format(filename)
+        data = read_from_csv(path, rework_card)
+        if data:
+            self.home_frame_entry_1.delete(0, customtkinter.END)
+            messagebox.showerror("Error", "Harness Already Exist!!!")
             return
         csv_data.append(rework_card)
         # check Fault Description
-        fault_desc = self.home_frame_entry_5.get()
-        if fault_desc == '':
-            self.home_frame_entry_5.delete(0, customtkinter.END)
-            messagebox.showerror("Error", "Invalid Fault Description!!!")
-            return
-        csv_data.append(fault_desc)
+        csv_data.append('None')
         # check Failure Process
-        process = self.home_frame_entry_6.get()
-        if process == '':
-            self.home_frame_entry_6.delete(0, customtkinter.END)
-            messagebox.showerror("Error", "InvalidProcess Step!!!")
-            return
-        csv_data.append(process)
-        csv_data.append("None")
-        csv_data.append("None")
-        csv_data.append("None")
-        start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        label_data['DATETIME'] = start_time
-        label_data['REWORKDATA'] = '{};{};{}'.format(rework_card,
-                                                 ref[1],
-                                                 start_time)
+        csv_data.append('None')
+        start_time = datetime.strptime(reword_data[2], "%Y-%m-%d %H:%M:%S")
+        csv_data.append(start_time)
+        end_time = datetime.now()
+        csv_data.append(end_time.strftime("%Y-%m-%d %H:%M:%S"))
+        rework_time = end_time - start_time
+        rework_time = rework_time.total_seconds() / 60
+        csv_data.append(round(rework_time, 2))
+        label_data['DATETIME'] = end_time.strftime("%Y-%m-%d %H:%M:%S")
+        label_data['REWORKDATA'] = rework_card
+        label_data['REWORKTIME'] = rework_card
         
         # print Label
-        generate_label(rework_card, 'start', label_data)
+        generate_label(rework_card, 'end', label_data)
         # save data to csv
         save_to_csv(path,csv_data)
-        self.clear_home_entries()
+        self.home_frame_entry_1.delete(0, customtkinter.END)
         
     def select_frame_by_name(self, name):
         # set button color for selected button
@@ -344,13 +231,15 @@ class App(customtkinter.CTk):
         else:
             self.third_frame.grid_forget()
 
-    def login_button_event(self):
+    def login_button_event(self, event=None):
         self.operator = self.login_frame_entry_1.get()
         if self.operator == "" or len(self.operator) != 5:
+            self.login_frame_entry_1.delete(0, customtkinter.END)
             messagebox.showerror("Error", "Invalid Operator Code!!!")
             self.operator = ""
             return
         self.select_frame_by_name("home")
+        self.login_frame_entry_1.delete(0, customtkinter.END)
 
     def home_button_event(self):
         self.operator = ""

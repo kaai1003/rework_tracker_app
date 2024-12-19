@@ -1,0 +1,4 @@
+Operator Code,Famille,Reference,DATEPROD,LINEPROD,Rework Card,Fault,Process,Start Time,End Time,Rework Time
+12345,P2JO,1234567 01,2024-12-19 09:14:00,1,123456987,705.Fil manquant,BOL1,None,None,None
+12345,L21,3445328 01,2024-12-19 09:19:50,4,123654789,700.Fil coupe / casse,BOL1,None,None,None
+,P21,2983743 02,2024-12-19 09:27:22,3,14785236,658.Connecteur (douille) non verrouille,CSL2,None,None,None

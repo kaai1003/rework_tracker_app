@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import csv
 import os
+import json
 from datetime import datetime
 
 def get_csv_name(rework_step):
@@ -53,7 +54,7 @@ def read_from_csv(path, rework_card):
         reader = csv.reader(file)
         next(reader)  # Skip headers
         for row in reader:
-            if row[3] == rework_card:
+            if row[5] == rework_card:
                 return row
     return None
 
@@ -75,3 +76,9 @@ def update_csv(path, rework_card, end_time, rework_time):
     with open(path, mode="w", newline="") as file:
         writer = csv.writer(file)
         writer.writerows(rows)
+
+def load_json():
+    """load list Errors"""
+    filename = 'data/failure_list.json'
+    with open(filename, "r", encoding='utf-8') as f:
+        return json.load(f)
