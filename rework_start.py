@@ -19,6 +19,61 @@ class App(customtkinter.CTk):
         self.title("START REWORK STATION")
         self.geometry("1050x800")
         self.operator = ""
+        self.failures_list = ["Connexion endommagee",
+                              "Erreur connexion",
+                              "Joint dechire",
+                              "Erreur de section de fils",
+                              "Sertissage sur isolant",
+                              "Erreur cosse",
+                              "Exces de collle sur cosse",
+                              "Manque etammage",
+                              "Ergot de connexion manquant",
+                              "Manchon mal positionnes",
+                              "Manchon dechires",
+                              "Erreur configuration",
+                              "Erreur Manchon",
+                              "Brains echapes",
+                              "Bavure sur le srtissage",
+                              "Contact manquant",
+                              "Fil inverse",
+                              "Fil coupe / casse",
+                              "Connecteur non verrouille",
+                              "Bouchon du connecteur dechire",
+                              "Erreur de composant",
+                              "Manque laniere de connecteur",
+                              "Tube ecrase",
+                              "Fil manquant",
+                              "Erreur Gaine/Gaffe",
+                              "Fil en plus",
+                              "Manque relais",
+                              "Manque Clip",
+                              "Clip endommage",
+                              "Mauvaise position de l'element",
+                              "enrubannage non-conforme",
+                              "BFRM endommage",
+                              "Connecteur endommage",
+                              "Gaine mal coupe/fissure",
+                              "Branche trop courte",
+                              "Branche trop longue",
+                              "Fusible deforme",
+                              "Fusible en mauvaise position",
+                              "PIN deforme",
+                              "Relais deforme",
+                              "Relais en mauvaise position",
+                              "Capot de connecteur casse",
+                              "Noeud mal realise",
+                              "Bavures / Fissures sur la surface",
+                              "Corps etranger dans l'injection",
+                              "Fils/gaine n'est pas au milieu de l'injection",
+                              "Bulles d'air sur l'injection",
+                              "Manque matiere / Non moule completement",
+                              "Exces matiere sur la piece",
+                              "Mauvaise matiere (granules)",
+                              "Faute d'injection sur le passe-cable",
+                              "Dechets sur la surface",
+                              "Point d'injection trop long / mal arase",
+                              "Piece surmoule non etanche"
+                              ]
 
         # set grid layout 1x2
         self.grid_rowconfigure(0, weight=1)
@@ -199,18 +254,9 @@ class App(customtkinter.CTk):
                                                                font=customtkinter.CTkFont(size=17, weight="bold"),
                                                                text_color="black")
         self.home_frame_entry_label_5.grid(row=10, column=0, padx=20, pady=5)
-        
-        self.failure_data = load_json()
-        self.category_var = customtkinter.StringVar()
-        self.home_frame_entry_5 = customtkinter.CTkComboBox(self.home_frame,
-                                                            values=list(self.failure_data.keys()),
-                                                            variable=self.category_var,
-                                                            command=self.update_subcategory,
-                                                            width=300)
-        self.home_frame_entry_5.grid(row=11, column=0, padx=20, pady=0)
         self.subcategory_var = customtkinter.StringVar()
         self.home_frame_entry_5_sub = customtkinter.CTkComboBox(self.home_frame,
-                                                                values=[],
+                                                                values=self.failures_list,
                                                                 variable=self.subcategory_var,
                                                                 width=300)
         self.home_frame_entry_5_sub.grid(row=12, column=0, padx=20, pady=0)
@@ -396,7 +442,6 @@ class App(customtkinter.CTk):
         self.home_frame_entry_2.delete(0, customtkinter.END)
         self.home_frame_entry_3.delete(0, customtkinter.END)
         self.home_frame_entry_4.delete(0, customtkinter.END)
-        self.home_frame_entry_5.set("")
         self.home_frame_entry_5_sub.set("")
         self.home_frame_entry_6.set("")
 
